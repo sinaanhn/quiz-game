@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { fetchQuizQuestions } from './services/geminiService';
 import { QuizQuestion, GameState } from './types';

@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { QuizQuestion } from '../types';
 
@@ -28,10 +27,10 @@ const quizSchema = {
 
 export async function fetchQuizQuestions(): Promise<QuizQuestion[]> {
   try {
-    if (!process.env.API_KEY) {
-      throw new Error("API_KEY environment variable not set");
+    if (!import.meta.env.VITE_GEMINI_API_KEY) {
+      throw new Error("VITE_GEMINI_API_KEY environment variable not set");
     }
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
     const prompt = `Generate ${NUM_QUESTIONS} unique and interesting general knowledge quiz questions. For each question, provide 4 multiple-choice options. Ensure one of the options is the correct answer. The questions should cover a variety of topics like history, science, pop culture, and geography.`;
 
